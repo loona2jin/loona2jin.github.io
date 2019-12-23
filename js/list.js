@@ -73,7 +73,7 @@ $(document).ready(function(){
         }).always(function(jqXHR, textStatus) {
             alert('투표가 완료되었습니다. 참여해주셔서 감사합니다.');
             $('body').remove();
-            location.href = 'https://twitter.com/intent/tweet?text=나는 투짅의 노예임을 선언합니다.&url=http://www.naver.com';
+            location.href = 'https://twitter.com/intent/tweet?text=나는 투짅의 노예임을 선언합니다.&url=https://loona2jin.github.io/';
         });
        }
     
