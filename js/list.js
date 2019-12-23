@@ -305,7 +305,7 @@ $(document).ready(function(){
 			infiniteLimit: items.length,
 			dataset: requestData,
 			dataFiller: updateContent,
-			cacheSize: 20
+			cacheSize: 10
 		});
         
         scroll.on('scroll', function(){
