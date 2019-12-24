@@ -56,7 +56,8 @@ body {
 	border-radius: 10px;
 	top: 5px;
 	right: 5px;
-	background: #ec374a;
+	background: #ec374a url('../images/1533913.png') center no-repeat;
+	background-size: 90% 90%;
 	cursor: pointer;
 }
 
