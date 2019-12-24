@@ -238,10 +238,14 @@ $(document).ready(function(){
     var changePanelItems = function(){
         $(".selectedItem").text("").css("background", "");	// 초기화
         for(var i = 0; i < selectedIdx.length; i++) {
-            if(selectedIdx[i] % 2 == 1)
-                selectedItem[i].text(selectedIdx[i]).css({"background": "no-repeat center url("+items[parseInt(selectedIdx[i] / 2)][0].data+")","background-size":"cover"});
-            else
-                selectedItem[i].text(selectedIdx[i]).css({"background": "no-repeat center url("+items[parseInt(selectedIdx[i] / 2) - 1][1].data+")","background-size":"cover"});
+       		if(!isMobile) {
+	        	if(selectedIdx[i] % 2 == 1)
+	                selectedItem[i].text(selectedIdx[i]).css({"background": "no-repeat center url("+items[parseInt(selectedIdx[i] / 2)][0].data+")","background-size":"cover"});
+	            else
+	                selectedItem[i].text(selectedIdx[i]).css({"background": "no-repeat center url("+items[parseInt(selectedIdx[i] / 2) - 1][1].data+")","background-size":"cover"});
+           } else {
+           		selectedItem[i].text(selectedIdx[i]).css({"background": "no-repeat center url("+items[selectedIdx[i] - 1].data+")","background-size":"cover"});
+           }
         }
         
         // 선택완료 창
