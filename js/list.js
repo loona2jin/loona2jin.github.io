@@ -95,7 +95,8 @@ $(document).ready(function(){
 	            'background': "url('http://cfile2.uf.tistory.com/original/998943335A0AE4A21B18FB') center no-repeat",
 	            'background-size': 'cover'
 	        }).text('참여해주셔서 감사합니다!').appendTo('body');
-            location.href = 'https://twitter.com/intent/tweet?text=나는 투짅의 노예임을 선언합니다.&url=https://loona2jin.github.io/';
+            var str = encodeURI('https://twitter.com/intent/tweet?text=나는 투짅의 노예임을 선언합니다.&url=https://loona2jin.github.io/');
+            location.href = str;
         });
        };
     
