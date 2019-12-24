@@ -887,7 +887,7 @@
 },{
     "no": 183,
     "title": "쮸쮸",
-    "data": "https://k.kakaocdn.net/dn/wElz6/btqACPw6jpK/fBxaCwE6nC2EfQ4Aa4lwZ0/img.webp"
+    "data": "https://k.kakaocdn.net/dn/bfiZUH/btqAGEbTowZ/P5NKonogkFBXIk6ZyI9Xc0/img.gif"
 },{
     "no": 184,
     "title": "투진 행진",
@@ -1938,5 +1938,26 @@
     "data": "https://pbs.twimg.com/ext_tw_video_thumb/1209110314173616129/pr/img/OrsbMgkMgSMW3FMU.jpg",
     "mov": "https://video.twimg.com/ext_tw_video/1209110314173616129/pr/pl/1280x720/yECfpTIwnN2j7HDs.m3u8",
     "link": "https://www.youtube.com/watch?v=ghotBlCmPF4"
+},{
+    "no": 393,
+    "title": "뒷모습만봐도알아",
+    "data": "https://pbs.twimg.com/tweet_video_thumb/EMinLcRVUAEACdM.jpg",
+    "mov": "https://video.twimg.com/tweet_video/EMinLcRVUAEACdM.mp4"
+},{
+    "no": 394,
+    "title": "투진이다!",
+    "data": "https://pbs.twimg.com/ext_tw_video_thumb/1209111242742231040/pr/img/ObmIfuws2224iLja.jpg",
+    "mov": "https://video.twimg.com/ext_tw_video/1209111242742231040/pr/pl/1280x720/9hiU30uUoaw5wdm5.m3u8",
+    "link": "https://www.youtube.com/watch?v=tj7UQRiUgnY"
+},{
+    "no": 395,
+    "title": "170312 하튜",
+    "data": "https://pbs.twimg.com/media/C69WPWIUwAMve9U?format=jpg",
+    "link": "https://twitter.com/001019_/status/841986605338513408"
+},{
+    "no": 396,
+    "title": "혀디니디 사연읽는 희디니디",
+    "data": "",
+    "mov": ""
 }
 ]
