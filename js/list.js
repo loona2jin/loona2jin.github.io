@@ -138,7 +138,8 @@ $(document).ready(function(){
             loadCompleteJSON();
         });
     } catch(e) {
-        console.log("json로드 실패");    
+        console.log("json로드 실패");
+	alert('파일 불러오는데 실패했습니다.@jinjjinjarra에게 문의해주세요.');
     }
 	
 	var requestData = function(start, count) {
@@ -147,7 +148,7 @@ $(document).ready(function(){
 		this.updateCache(start, result);
 	};
 	
-	var updateContent = function(el, data) {console.log(data);
+	var updateContent = function(el, data) {
 		if(data) {
 			var setData = function(obj, num){
                 var element = obj[num];
