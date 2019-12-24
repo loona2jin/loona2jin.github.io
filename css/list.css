@@ -128,6 +128,8 @@ body {
 
 .content-mobile {
 	width: 95% !important;
+	max-width: 95% !important;
+	margin: auto !important;
 }
 
 .content {
