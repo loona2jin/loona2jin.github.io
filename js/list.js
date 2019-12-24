@@ -80,7 +80,21 @@ $(document).ready(function(){
              type:"POST"
         }).always(function(jqXHR, textStatus) {
             alert('투표가 완료되었습니다. 참여해주셔서 감사합니다.');
-            $('body').remove();
+            $('body').empty();
+            $('body').css({
+	            'height': '100%',
+	            'width': '100%',
+	            'display': 'block',
+	            'position': 'absolute'
+	        });
+            $('<div>').css({
+	            'color': 'white',
+	            'font-size': 'xx-large',
+	            'text-align': 'center',
+	            'height': '100%',
+	            'background': "url('http://cfile2.uf.tistory.com/original/998943335A0AE4A21B18FB') center no-repeat",
+	            'background-size': 'cover'
+	        }).text('참여해주셔서 감사합니다!').appendTo('body');
             location.href = 'https://twitter.com/intent/tweet?text=나는 투짅의 노예임을 선언합니다.&url=https://loona2jin.github.io/';
         });
        };
