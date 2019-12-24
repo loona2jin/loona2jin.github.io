@@ -126,6 +126,10 @@ body {
 	overflow: hidden;
 }
 
+.content-mobile {
+	width: 95% !important;
+}
+
 .content {
 	max-width:380px;
 	width: 46%;
