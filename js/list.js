@@ -1,4 +1,12 @@
 $(document).ready(function(){
+	var filter = "win16|win32|win64|mac";
+	var isMobile = false;
+	if(navigator.platform){
+		if(0 > filter.indexOf(navigator.platform.toLowerCase())){
+			isMobile = true;
+		}
+	}
+		
     var currentDay = new Date();
     var finalDay = new Date('2019-12-31');
     
@@ -75,7 +83,7 @@ $(document).ready(function(){
             $('body').remove();
             location.href = 'https://twitter.com/intent/tweet?text=나는 투짅의 노예임을 선언합니다.&url=https://loona2jin.github.io/';
         });
-       }
+       };
     
 	for(var i = 0; i < 9; i++) {
 		selectedItem.push(
@@ -104,10 +112,14 @@ $(document).ready(function(){
 	
     try{
         $.getJSON("js/data.json", function(data) {
-            // 2개씩 저장		
-            for(var i = 0; i < data.length / 2; i++) {
-                items[i] = data.slice(i * 2, i * 2 + 2);
-            }		
+            // 2개씩 저장	
+            if(isMobile) {
+            	items = data;
+            } else {
+	            for(var i = 0; i < data.length / 2; i++) {
+	                items[i] = data.slice(i * 2, i * 2 + 2);
+	            }		
+            }
 
             loadCompleteJSON();
         });
@@ -121,7 +133,7 @@ $(document).ready(function(){
 		this.updateCache(start, result);
 	};
 	
-	var updateContent = function(el, data) {
+	var updateContent = function(el, data) {console.log(data);
 		if(data) {
 			var setData = function(obj, num){
                 var element = obj[num];
@@ -144,8 +156,12 @@ $(document).ready(function(){
 				
 				changeSelectedPanel();
 				
-                if(data[num]){
-                    if(selectedIdx.indexOf(data[num].no) != -1) {
+				var contentData = data[num];
+				if(isMobile) {
+					contentData = data;
+				} 				
+                if(contentData){
+                    if(selectedIdx.indexOf(contentData.no) != -1) {
                         elInput.prop("checked", true);
                         elMedia.addClass("mediaSelect");
                         $(element).addClass("elSelect");
@@ -156,25 +172,25 @@ $(document).ready(function(){
                     }
 
                     //
-                    if(data[num].mov) {
+                    if(contentData.mov) {
                         $(elMedia[0].getElementsByClassName('video-js')[0]).css('display','block');
-                        elMedia[0].getElementsByClassName('video-js')[0].player.poster(data[num].data);
-                        elMedia[0].getElementsByClassName('video-js')[0].player.src(data[num].mov);
-                        if(!data[num].link)
+                        elMedia[0].getElementsByClassName('video-js')[0].player.poster(contentData.data);
+                        elMedia[0].getElementsByClassName('video-js')[0].player.src(contentData.mov);
+                        if(!contentData.link)
                             elMedia[0].getElementsByClassName('video-js')[0].player.options_.autoplay = true;
                         else
                             elMedia[0].getElementsByClassName('video-js')[0].player.options_.autoplay = false;
                     } else {
                         $(elMedia[0].getElementsByClassName('video-js')[0]).css('display','none');
                         elMedia[0].getElementsByClassName('video-js')[0].player.pause();
-                        elMedia.css({"background": "no-repeat center url("+data[num].data+")","background-size":"contain"});
+                        elMedia.css({"background": "no-repeat center url("+contentData.data+")","background-size":"contain"});
                     }
                     
-                    elTitle.text(data[num].no + "-" + data[num].title).off("click").on("click", function(){
-                        if(data[num].link){
-                            window.open(data[num].link);
+                    elTitle.text(contentData.no + "-" + contentData.title).off("click").on("click", function(){
+                        if(contentData.link){
+                            window.open(contentData.link);
                         } else
-                            window.open(data[num].data);
+                            window.open(contentData.data);
                     });
                     elInput.off("click").on("click", function(){
                         if($(this).is(":checked")){
@@ -186,7 +202,7 @@ $(document).ready(function(){
                                 return;
                             }
 
-                            selectedIdx.push(data[num].no);
+                            selectedIdx.push(contentData.no);
                             elMedia.addClass("mediaSelect");
                             $(element).addClass("elSelect");
 
@@ -195,7 +211,7 @@ $(document).ready(function(){
                                 final.off("click").on("click", finalVote).appendTo("body");
                             } 
                         } else {
-                            selectedIdx.splice(selectedIdx.indexOf(data[num].no), 1);
+                            selectedIdx.splice(selectedIdx.indexOf(contentData.no), 1);
                             elMedia.removeClass("mediaSelect");
                             $(element).removeClass("elSelect");
                             if(selectedIdx.length != MAXSELECTCNT) {
@@ -210,8 +226,12 @@ $(document).ready(function(){
                 } 
 			};
 			
-			setData(el.children, 0);
-			setData(el.children, 1);
+			if(isMobile) {
+				setData(el.children, 0);
+			} else {
+				setData(el.children, 0);
+				setData(el.children, 1);
+			}
 		} 
 	};
     
@@ -230,7 +250,7 @@ $(document).ready(function(){
         } else{
             final.off("click", finalVote).remove();
         }
-    }
+    };
 	
 	var createListDom = function(idx) {
 		var row = $("<div>")
@@ -246,7 +266,7 @@ $(document).ready(function(){
 			.appendTo(content1);
         var video1 = $('<video class="video-js" id="video' + idx + '" style="width: 100%;height: 100%;" loop controls>')
 			.appendTo(media1);
-        var source1 = $('<source type="application/x-mpegURL" src="https://video.twimg.com/ext_tw_video/1203641827284226048/pu/pl/ilGUK5xcftBr8EXz.m3u8">').appendTo(video1);   
+        var source1 = $('<source type="application/x-mpegURL" src="https://tvetamovie.pstatic.net/libs/1267/1267665/f14ca57526550471a27c_20191203173036264.mp4-pBASE-v0-f96042-20191203173227718.mp4"></source>').appendTo(video1);   
 		videojs('video'+idx);	
         
 		var title1 = $("<div>")
@@ -257,26 +277,30 @@ $(document).ready(function(){
 			.attr("type", "checkbox")
 			.appendTo(content1);
 		
-		var content2 = $("<div>")
-			.addClass("content")
-			.appendTo(row);
-		
-		var media2 = $("<div>")
-			.addClass("media")
-			.appendTo(content2);
-        var video2 = $("<video class='video-js' id='video" + idx + "_' style='width: 100%;height: 100%;' loop controls>")
-			.appendTo(media2);
-        var source2 = $('<source type="application/x-mpegURL" src="https://video.twimg.com/ext_tw_video/1203641827284226048/pu/pl/ilGUK5xcftBr8EXz.m3u8">').appendTo(video2);  
-		videojs('video'+idx+'_');		
-        
-		var title2 = $("<div>")
-			.addClass("title")
-			.appendTo(content2);
+		if(!isMobile) {
+			var content2 = $("<div>")
+				.addClass("content")
+				.appendTo(row);
 			
-		var check2 = $("<input>")
-			.attr("type", "checkbox")
-			.appendTo(content2);
-			
+			var media2 = $("<div>")
+				.addClass("media")
+				.appendTo(content2);
+	        var video2 = $("<video class='video-js' id='video" + idx + "_' style='width: 100%;height: 100%;' loop controls>")
+				.appendTo(media2);
+	        var source2 = $('<source type="application/x-mpegURL" src="https://tvetamovie.pstatic.net/libs/1267/1267665/f14ca57526550471a27c_20191203173036264.mp4-pBASE-v0-f96042-20191203173227718.mp4"></source>').appendTo(video2);  
+			videojs('video'+idx+'_');		
+	        
+			var title2 = $("<div>")
+				.addClass("title")
+				.appendTo(content2);
+				
+			var check2 = $("<input>")
+				.attr("type", "checkbox")
+				.appendTo(content2);
+		} else {
+			content1.addClass('content-mobile');
+		}
+				
 		contentHeight = Math.min($(".content").width(), 380);
 			
 		$(row).height(contentHeight);
@@ -305,18 +329,14 @@ $(document).ready(function(){
 			infiniteLimit: items.length,
 			dataset: requestData,
 			dataFiller: updateContent,
-			cacheSize: 10
+			cacheSize: isMobile ? (Math.ceil(createRowCnt) * 2) : (Math.ceil(createRowCnt) * 4)
 		});
         
         scroll.on('scroll', function(){
-            //$('html, body').scrollTop();
             $('html, body').animate({scrollTop:$('#list').offset().top}, 500, 'swing');
         });
 	};
 	
-//    $(document).scroll(function(e){
-//        $('html, body').animate({scrollTop:$('#list').offset().top}, 500, 'swing');
-//    });
         $('.top-wrap').click(function(){
             $('html, body').animate({scrollTop:$('#list').offset().top}, 500, 'swing');
         });
