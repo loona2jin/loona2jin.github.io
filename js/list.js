@@ -85,6 +85,7 @@ $(document).ready(function(){
 	            'height': '100%',
 	            'width': '100%',
 	            'display': 'block',
+		    'background': '#545454',
 	            'position': 'absolute'
 	        });
             $('<div>').css({
