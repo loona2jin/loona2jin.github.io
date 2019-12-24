@@ -172,8 +172,10 @@ body {
 }
 
 input[type="checkbox"] { 
-	position: absolute;
-    top: 5%;
+	position: absolute;    
+    top: 3%;
+    width: 5%;
+    height: 5%;
 }
 
 .final {
