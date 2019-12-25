@@ -179,6 +179,7 @@ $(document).ready(function(){
 					contentData = data;
 				} 				
                 if(contentData){
+			elInput.prop("disabled", false);
                     if(selectedIdx.indexOf(contentData.no) != -1) {
                         elInput.prop("checked", true);
                         elMedia.addClass("mediaSelect");
@@ -241,17 +242,28 @@ $(document).ready(function(){
 
                         changePanelItems();
                     });
-                } 
-			};
-			
-			if(isMobile) {
-				setData(el.children, 0);
-			} else {
-				setData(el.children, 0);
-				setData(el.children, 1);
-			}
-		} 
+                } else {
+                    elInput.prop("disabled", true);
+                    elInput.prop("checked", false);
+                    elMedia.removeClass("mediaSelect");
+                    $(element).removeClass("elSelect");
+                    
+                    $(elMedia[0].getElementsByClassName('video-js')[0]).css('display','none');
+                    elMedia[0].getElementsByClassName('video-js')[0].player.pause();
+                    elMedia.css({"background": ""});
+                    
+                    elTitle.text("").off("click");
+                }
 	};
+			
+		if(isMobile) {
+			setData(el.children, 0);
+		} else {
+			setData(el.children, 0);
+			setData(el.children, 1);
+		}
+	} 
+};
     
     var changePanelItems = function(){
         $(".selectedItem").text("").css("background", "");	// 초기화
