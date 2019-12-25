@@ -42,7 +42,7 @@ $(document).ready(function(){
 	var createRowCnt = 0;
 	var selectedIdx = [];
 	var selectedItem = [];
-	var MAXSELECTCNT = 9;
+	var MAXSELECTCNT = 20;
 	
 	var wrapper = $("<div>")
 		.addClass("wrapper")
@@ -101,14 +101,15 @@ $(document).ready(function(){
         });
        };
     
-	for(var i = 0; i < 9; i++) {
+	var selectedItemSize = ((Math.min(selectedPanel.width(), 500)) / 2.6);
+	for(var i = 0; i < MAXSELECTCNT; i++) {
 		selectedItem.push(
 			$("<div>")
 				.addClass("selectedItem")
 				.attr("id", "selectedPanel" + i)
 				.css({
-					"width": ((Math.min(selectedPanel.width(), 500)) / 2.5),
-					"height": ((Math.min(selectedPanel.width(), 500)) / 2.5)
+					"width": selectedItemSize,
+					"height": selectedItemSize
 				})
                 .on('click', function(evt){
                     $('.mediaSelect').each(function(idx, el){
