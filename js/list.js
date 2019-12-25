@@ -193,10 +193,10 @@ $(document).ready(function(){
                         $(elMedia[0].getElementsByClassName('video-js')[0]).css('display','block');
                         elMedia[0].getElementsByClassName('video-js')[0].player.poster(contentData.data);
                         elMedia[0].getElementsByClassName('video-js')[0].player.src(contentData.mov);
-                        if(!contentData.link)
-                            elMedia[0].getElementsByClassName('video-js')[0].player.options_.autoplay = true;
-                        else
-                            elMedia[0].getElementsByClassName('video-js')[0].player.options_.autoplay = false;
+//                         if(!contentData.link)
+//                             elMedia[0].getElementsByClassName('video-js')[0].player.options_.autoplay = true;
+//                         else
+//                             elMedia[0].getElementsByClassName('video-js')[0].player.options_.autoplay = false;
                     } else {
                         $(elMedia[0].getElementsByClassName('video-js')[0]).css('display','none');
                         elMedia[0].getElementsByClassName('video-js')[0].player.pause();
