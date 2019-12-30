@@ -8,7 +8,7 @@ $(document).ready(function(){
 	}
 		
     var currentDay = new Date();
-    var finalDay = new Date('2019-12-31');
+    var finalDay = new Date('2019-12-30');
     
     if(currentDay > finalDay){  // 투표끝
         $('#list').css({
